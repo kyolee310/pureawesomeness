@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+    <title>PURE AWESOMENESS</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" type="text/css" media="screen" charset="utf-8">
+    <link rel="stylesheet" href="css/pureawesomeness.css" type="text/css" media="screen" charset="utf-8">
+</head>
+<body ng-app="PureAwesomeness" ng-controller="PureAwesomenessCtrl" ng-init="initController()">
+    <!-- NAV BAR -->
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+       <div class="container">
+	   <div class="navbar-header">
+	       <a class="navbar-brand" href="#"> HELLO. WELCOME TO PURE AWESOMENESS</a>
+	   </div>
+	   <div class="collapse navbar-collapse">
+	   </div>
+       </div>
+    </div>
+
+     <!-- MAIN --->
+     <div class="container" id="outer-container">
+        <div class="top-input-div">
+            <span class="top-input-span">
+                <label id="tag-label">INSTAGRAM TAG: </label>
+                <input type="text" name="inputbox-instagram-tag" ng-model="instagramTag" ng-click="instagramTag = ''">
+            </span>
+            <span class="top-input-span">
+                <a ng-click="instagramTagUpdate()">CLICK TO AWESOME!</a>
+            </span>
+            <span class="top-input-span">
+                <label>Selected Tag: </label>
+                <span id="span-instagram-tag-clicked"></span>
+            </span>
+            <span class="top-input-span">
+               <label>Item Count: </label>
+               <span id="span-item-count">{{ items.length }}</span>
+           </span>
+        </div>
+        <div id="instagram-data">
+           <div class="instagram-items-div" ng-repeat="item in items">
+               <span>
+                  <label>Image: </label>
+		  <span><img ng-src="{{item.images.low_resolution.url}}"></span>
+               </span>
+               <span>
+                   <label>Text: </label>
+                   <span>{{ item.caption.text }}</span>
+                </span>
+                <span>
+                    <label>Tags: </label>
+                    <span>{{ item.tags }}</span>
+                </span>
+                <span>
+                    <label>Likes: </label>
+                    <span>{{ item.likes.count }}</span>
+                </span>
+                <span>
+                    <label>Profile Picture: </label>
+		    <span><img ng-src="{{item.user.profile_picture}}"  height="100" width="100"></span>
+                </span>
+                <span>
+                    <label>Username: </label>
+                    <span>{{ item.user.username }}</span>
+                </span>
+                <hr>
+                <span></span>
+            </div>
+         </div>
+    </div>
+
+    <!-- JS SCRIPTS --->
+    <script src="js/thirdparty/jquery/jquery-2.0.3.min.js"></script>
+    <script src="js/thirdparty/utils/purl.js"></script>
+    <script src="js/thirdparty/angular/angular-1.2.9.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/custom/pureawesomeness.js"></script>
+</body>
+</html>
+

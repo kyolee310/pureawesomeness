@@ -1,0 +1,26 @@
+body {
+  padding-top: 50px;
+}
+
+.top-input-div {
+  padding: 20px 15px;
+  text-align: center;
+}
+.top-input-span {
+    display: block;
+    padding: 5px 15px;
+}
+
+.instagram-items-div {
+  padding: 10px 15px;
+  text-align: center;
+}
+.instagram-items-div span {
+  display: block;
+  padding: 5px 15px;
+  word-wrap: break-word;
+}
+.instagram-items-div hr {
+  border-width: 5px 0;
+}
+
