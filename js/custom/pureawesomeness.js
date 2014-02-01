@@ -13,6 +13,9 @@ angular.module('PureAwesomeness', [])
         $scope.clientID = '';
         $scope.instagramTag = '';
         $scope.items = [];
+        $scope.item = {};
+        $scope.itemIndex = 0;
+        $scope.isItem = false;
         $scope.initController = function () {
             $scope.setInit();
             $scope.setWatch();
@@ -32,6 +35,22 @@ angular.module('PureAwesomeness', [])
             $scope.$watch('items', $scope.itemsWatchCallback );
         };
         $scope.itemsWatchCallback = function () {
+            if( $scope.items.length >= 1 ){
+                $scope.item = $scope.items[$scope.itemIndex];
+                $scope.isItem = true;
+            }
+        };
+        $scope.instagramItemUpdate = function (offset) {
+            $scope.isItem = false;
+            $scope.itemIndex = $scope.itemIndex + offset;
+            if( $scope.itemIndex < 0){
+                $scope.itemIndex = 0;
+            }
+            if( $scope.itemIndex >= $scope.items.length){
+                $scope.itemIndex = 0;
+            }
+            $scope.item = $scope.items[$scope.itemIndex];
+            $scope.isItem = true;
         };
         $scope.instagramTagInputBoxKeypress = function (ev) {
             if (ev.which==13)
@@ -45,6 +64,7 @@ angular.module('PureAwesomeness', [])
         $scope.getImages = function (tag) {
             var instagram_api = 'https://api.instagram.com/v1/tags/'+tag+'/media/recent?client_id='+$scope.clientID+'&callback=JSON_CALLBACK'
             //console.log("API: " + instagram_api);
+            $scope.isItem = false;
             $http.jsonp(instagram_api).success(function(oData) {
                 var results = oData.data ? oData.data : [];
                 $scope.items = results;

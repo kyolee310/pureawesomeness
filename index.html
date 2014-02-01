@@ -43,9 +43,25 @@
 
         <!-- INSTAGRAM BLOCK -->
         <div id="instagram-data">
-           <div class="instagram-items-div" ng-repeat="item in items">
-               <div class="instagram-image-div text-center">
-		  <span><img ng-src="{{item.images.low_resolution.url}}"></span>
+           <div class="instagram-items-div" ng-model="item" ng-show="isItem">
+               <div class="row">
+	           <div class="col-lg-8 col-centered">
+                      <div class="instagram-image-div text-center">
+		          <span><img ng-src="{{item.images.low_resolution.url}}"></span>
+                      </div>
+                  </div>
+               </div>
+               <div class="row">
+                   <div class="col-lg-8 col-centered">
+                       <div class="text-center">
+                           <span class="item-nav-button" ng-click="instagramItemUpdate(-1)">
+                               <span class="glyphicon glyphicon-backward"></span>
+                           </span>
+                           <span class="item-nav-button" ng-click="instagramItemUpdate(1)">
+                               <span class="glyphicon glyphicon-forward"></span>
+                           <span>
+                       </div>
+                   </div>
                </div>
                <div class="row">
 		       <div class="col-lg-8 col-centered">
