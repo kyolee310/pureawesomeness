@@ -2,31 +2,45 @@ body {
   padding-top: 50px;
 }
 
+.well {
+   background-color: rgba(200, 200, 200, 0.4);
+}
+
 .instagram-logo {
   width: 32px;
   height: 32px;
 }
 
-.top-input-div {
-  padding: 20px 15px;
-  text-align: center;
+.profile-picture {
+  width: 64px;
+  height: 64px;
 }
-.top-input-span {
-    display: block;
-    padding: 5px 15px;
+
+.top-inputbox-div {
+  padding: 10px 15px;
+  display: inline;
+}
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
 }
 
 .instagram-items-div {
-  padding: 10px 15px;
-  text-align: center;
+  text-align: left;
 }
-.instagram-items-div span {
+.instagram-image-div {
+  padding: 20px 15px;
+}
+.instagram-items-span {
   display: block;
-  padding: 5px 15px;
+  padding: 2px 0px;
   word-wrap: break-word;
 }
-.instagram-items-div hr {
-  border-width: 5px 0;
+.instagram-tags-span {
+  display: inline;
+  padding: 5px 2px;
+  word-wrap: break-word;
 }
 
 

@@ -23,46 +23,64 @@
     </div>
 
      <!-- MAIN --->
-     <div class="container" id="outer-container">
-        <div class="top-input-div">
-            <span class="top-input-span">
-                <img class="instagram-logo" src="img/instagram_256.png">
-                <label id="tag-label">TAG: </label>
-                <input type="text" name="inputbox-instagram-tag" ng-model="instagramTag"
-                    ng-style="myStyle"
-                    ng-init="myStyle={color:'grey'}; instagramTag = '<enter tag here>'" ng-click="instagramTag = ''; myStyle={color:'black'};" 
-                    ng-keypress="instagramTagInputBoxKeypress($event)">
-            </span>
+     <div class="container-fluid" id="outer-container">
+         <div class="row top-inputbox-div">
+             <div class="col-lg-4 col-centered">
+                 <div class="input-group">
+                     <span class="input-group-addon">TAG</span>
+                     <input type="text" class="form-control" name="inputbox-instagram-tag" placeholder="<enter tag here>"
+                        ng-model="instagramTag" ng-click="instagramTag = ''" 
+                        ng-keypress="instagramTagInputBoxKeypress($event)">
+                     <span class="input-group-addon" ng-click="instagramTagUpdate()">
+                         <span class="glyphicon glyphicon-refresh"></span>
+                     </span>
+                 </div>
+             </div>
+             <div class="col-lg-1 col-centered">
+                 <img class="instagram-logo" src="img/instagram_256.png">
+             </div>
         </div>
+
+        <!-- INSTAGRAM BLOCK -->
         <div id="instagram-data">
            <div class="instagram-items-div" ng-repeat="item in items">
-               <span>
-                  <label>Image: </label>
+               <div class="instagram-image-div text-center">
 		  <span><img ng-src="{{item.images.low_resolution.url}}"></span>
-               </span>
-               <span>
-                   <label>Text: </label>
-                   <span>{{ item.caption.text }}</span>
-                </span>
-                <span>
-                    <label>Tags: </label>
-                    <span>{{ item.tags }}</span>
-                </span>
-                <span>
-                    <label>Likes: </label>
-                    <span>{{ item.likes.count }}</span>
-                </span>
-                <span>
-                    <label>Profile Picture: </label>
-		    <span><img ng-src="{{item.user.profile_picture}}"  height="100" width="100"></span>
-                </span>
-                <span>
-                    <label>Username: </label>
-                    <span>{{ item.user.username }}</span>
-                </span>
-                <hr>
-                <span></span>
-            </div>
+               </div>
+               <div class="row">
+		       <div class="col-lg-8 col-centered">
+			       <div class="well">
+				   <div class="row">
+					<div class="col-lg-2 text-right">
+					     <span class="instagram-items-span">
+						<span><img class="profile-picture" ng-src="{{item.user.profile_picture}}"></span>
+					     </span>
+					    <span class="instagram-items-span">
+						<span class="glyphicon glyphicon-user"></span>
+						<span>{{ item.user.username }}</span>
+					    </span>
+				       </div>
+				       <div class="col-lg-6 text-left">
+					    <span class="instagram-items-span">
+						<span class="glyphicon glyphicon-comment"></span>
+						<span>{{ item.caption.text }}</span>
+					    </span>
+					    <span class="instagram-tags-span">
+						<span class="glyphicon glyphicon-tags"></span>
+						<span ng-repeat="tag in item.tags">
+						    <span class="label label-warning">{{ tag }}</span>
+						</span>
+					    </span>
+					    <span class="instagram-items-span">
+						<span class="glyphicon glyphicon-heart"></span>
+						<span>{{ item.likes.count }}</span>
+					    </span>
+					</div>
+				    </div>
+				</div>
+			</div>
+                </div>
+             </div>
          </div>
     </div>
 
