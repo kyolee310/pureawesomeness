@@ -8,7 +8,7 @@
 
 
 angular.module('PureAwesomeness', [])
-    .controller('PureAwesomenessCtrl', function ($scope, $http) {
+    .controller('PureAwesomenessCtrl', function ($scope, $http, $timeout) {
         $scope.urlParams = $.url().param();
         $scope.clientID = '';
         $scope.instagramTag = '';
@@ -51,6 +51,11 @@ angular.module('PureAwesomeness', [])
             }
             $scope.item = $scope.items[$scope.itemIndex];
             $scope.isItem = true;
+            $scope.promise = $timeout(function(){ $scope.instagramItemUpdate(1);}, 5000);
+        };
+        $scope.pauseTimer = function() {
+            console.log("PASUED");
+            $timeout.cancel($scope.promise);
         };
         $scope.instagramTagInputBoxKeypress = function (ev) {
             if (ev.which==13)
