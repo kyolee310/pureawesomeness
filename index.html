@@ -12,9 +12,12 @@
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
        <div class="container">
 	   <div class="navbar-header">
-	       <a class="navbar-brand" href="#"> HELLO. WELCOME TO PURE AWESOMENESS</a>
-	   </div>
-	   <div class="collapse navbar-collapse">
+	       <a class="navbar-brand"> HELLO. WELCOME TO PURE AWESOMENESS</a>
+           </div>
+           <div class="collapse navbar-collapse">
+               <span class="navbar-text navbar-right">
+                   <span id="span-instagram-tag-clicked"></span>
+               </span>
 	   </div>
        </div>
     </div>
@@ -23,20 +26,13 @@
      <div class="container" id="outer-container">
         <div class="top-input-div">
             <span class="top-input-span">
-                <label id="tag-label">INSTAGRAM TAG: </label>
-                <input type="text" name="inputbox-instagram-tag" ng-model="instagramTag" ng-click="instagramTag = ''">
+                <img class="instagram-logo" src="img/instagram_256.png">
+                <label id="tag-label">TAG: </label>
+                <input type="text" name="inputbox-instagram-tag" ng-model="instagramTag"
+                    ng-style="myStyle"
+                    ng-init="myStyle={color:'grey'}; instagramTag = '<enter tag here>'" ng-click="instagramTag = ''; myStyle={color:'black'};" 
+                    ng-keypress="instagramTagInputBoxKeypress($event)">
             </span>
-            <span class="top-input-span">
-                <a ng-click="instagramTagUpdate()">CLICK TO AWESOME!</a>
-            </span>
-            <span class="top-input-span">
-                <label>Selected Tag: </label>
-                <span id="span-instagram-tag-clicked"></span>
-            </span>
-            <span class="top-input-span">
-               <label>Item Count: </label>
-               <span id="span-item-count">{{ items.length }}</span>
-           </span>
         </div>
         <div id="instagram-data">
            <div class="instagram-items-div" ng-repeat="item in items">

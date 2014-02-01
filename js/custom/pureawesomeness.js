@@ -27,12 +27,15 @@ angular.module('PureAwesomeness', [])
                     $scope.clientID = config.client_id;
                 },
             });
-            $scope.instagramTag = "San Francisco";
         };
         $scope.setWatch = function () {
             $scope.$watch('items', $scope.itemsWatchCallback );
         };
         $scope.itemsWatchCallback = function () {
+        };
+        $scope.instagramTagInputBoxKeypress = function (ev) {
+            if (ev.which==13)
+                 $scope.instagramTagUpdate();
         };
         $scope.instagramTagUpdate = function () {
             $scope.instagramTag = ($scope.instagramTag).replace(/\s/g, '');
