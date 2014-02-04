@@ -82,7 +82,7 @@ awesomeModule.controller('PureAwesomenessCtrl', function ($scope, $http, $timeou
         $scope.instagramItemUpdate = function (offset) {
             $scope.itemIndex = $scope.itemIndex + offset;
             if( $scope.itemIndex < 0){
-                $scope.itemIndex = 0;
+                $scope.itemIndex = $scope.items.length-1;
             }
             if( $scope.itemIndex >= $scope.items.length){
                 $scope.itemIndex = 0;
