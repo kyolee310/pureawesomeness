@@ -1,0 +1,47 @@
+
+<div id="instagram-data">
+    <div class="instagram-items-div" ng-model="item" ng-show="isItem" ng-cloak="">
+        <div class="row">
+            <div class="col-lg-8 col-centered">
+                <div class="instagram-image-div text-center">
+	            <span><img ng-src="{{item.images.low_resolution.url}}"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 col-centered">
+	       <div class="well">
+		   <div class="row">
+			<div class="col-lg-2 text-right">
+			     <span class="instagram-items-span">
+				<span><img class="profile-picture" ng-src="{{item.user.profile_picture}}"></span>
+			     </span>
+			    <span class="instagram-items-span">
+				<span class="glyphicon glyphicon-user"></span>
+				<span>{{ item.user.username }}</span>
+			    </span>
+		       </div>
+		       <div class="col-lg-6 text-left">
+			    <span class="instagram-items-span">
+				<span class="glyphicon glyphicon-comment"></span>
+				<span>{{ item.caption.text }}</span>
+			    </span>
+			    <span class="instagram-tags-span">
+				<span class="glyphicon glyphicon-tags"></span>
+				<span ng-repeat="tag in item.tags">
+				    <span class="label label-warning">{{ tag }}</span>
+				</span>
+			    </span>
+			    <span class="instagram-items-span">
+				<span class="glyphicon glyphicon-heart"></span>
+				<span>{{ item.likes.count }}</span>
+			    </span>
+                        </div>
+		    </div>
+                </div>
+	    </div>
+        </div>
+    </div>
+</div>
+
+

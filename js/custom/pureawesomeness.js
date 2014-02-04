@@ -6,9 +6,27 @@
  *
  */
 
+var awesomeModule = angular.module('PureAwesomeness', []);
 
-angular.module('PureAwesomeness', [])
-    .controller('PureAwesomenessCtrl', function ($scope, $http, $timeout) {
+
+awesomeModule.directive("navbar", function () {
+        return {
+            restrict: 'E',
+            templateUrl: 'html/navbar.html',
+            replace: true
+        };
+    });
+
+awesomeModule.directive("instagram", function () {
+        return {
+            restrict: 'E',
+            templateUrl: 'html/instagram.html',
+            replace: true
+        };
+    });
+
+
+awesomeModule.controller('PureAwesomenessCtrl', function ($scope, $http, $timeout) {
         $scope.urlParams = $.url().param();
         $scope.clientID = '';
         $scope.instagramTag = '';
@@ -54,7 +72,6 @@ angular.module('PureAwesomeness', [])
             $scope.promise = $timeout(function(){ $scope.instagramItemUpdate(1);}, 5000);
         };
         $scope.pauseTimer = function() {
-            console.log("PASUED");
             $timeout.cancel($scope.promise);
         };
         $scope.instagramTagInputBoxKeypress = function (ev) {
