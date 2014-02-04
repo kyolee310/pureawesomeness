@@ -33,6 +33,7 @@ awesomeModule.controller('PureAwesomenessCtrl', function ($scope, $http, $timeou
         $scope.instagramTag = '';
         $scope.instagramTagEntered = '';
         $scope.items = [];
+        $scope.nextItems = [];
         $scope.item = {};
         $scope.itemIndex = 0;
         $scope.itemDisplayID = -1;
@@ -56,11 +57,14 @@ awesomeModule.controller('PureAwesomenessCtrl', function ($scope, $http, $timeou
             $scope.$watch('instagramTagEntered', $scope.instagramTagEnteredWatchCallback );
             $scope.$watch('item', $scope.itemWatchCallback );
             $scope.$watch('items', $scope.itemsWatchCallback );
+            $scope.$watch('itemIndex', $scope.itemIndexWatchCallback );
         };
         $scope.instagramTagEnteredWatchCallback = function () {
             if( $scope.instagramTagEntered ){
                 $('#span-instagram-tag-entered').text( "#" + $scope.instagramTagEntered);
-                $scope.getImages($scope.instagramTagEntered);
+                $scope.getImages($scope.instagramTagEntered, function(oData) {
+                    $scope.items = oData.data ? oData.data : [];
+                });
             }
         };
         $scope.itemWatchCallback = function () {
@@ -69,8 +73,15 @@ awesomeModule.controller('PureAwesomenessCtrl', function ($scope, $http, $timeou
             }
         };
         $scope.itemsWatchCallback = function () {
-            if( $scope.items.length >= 1 ){
+            if( $scope.items && $scope.items.length >= 1 ){
                 $scope.item = $scope.items[$scope.itemIndex];
+            }
+        };
+        $scope.itemIndexWatchCallback = function () {
+            if( $scope.items && $scope.nextItems.length == 0 ){
+                if( $scope.itemIndex == $scope.items.length - 4 ){
+                    $scope.getNextImages();
+                }
             }
         };
         $scope.isShow = function (item) {
@@ -85,7 +96,11 @@ awesomeModule.controller('PureAwesomenessCtrl', function ($scope, $http, $timeou
                 $scope.itemIndex = $scope.items.length-1;
             }
             if( $scope.itemIndex >= $scope.items.length){
-                $scope.itemIndex = 0;
+               $scope.itemIndex = 0;
+               if( $scope.promise && $scope.nextItems ){
+                   $scope.items = $scope.nextItems;
+                   $scope.nextItems = [];
+               }
             }
             $scope.item = $scope.items[$scope.itemIndex];
         };
@@ -102,22 +117,21 @@ awesomeModule.controller('PureAwesomenessCtrl', function ($scope, $http, $timeou
         $scope.instagramTagUpdate = function () {
             $scope.instagramTagEntered = ($scope.instagramTag).replace(/\s/g, '');
         };
-        $scope.getImages = function (tag) {
+        $scope.getImages = function (tag, callback) {
             var instagram_api = 'https://api.instagram.com/v1/tags/'+tag+'/media/recent?client_id='+$scope.clientID+'&callback=JSON_CALLBACK'
             //console.log("API: " + instagram_api);
-            $scope.isItem = false;
-            $http.jsonp(instagram_api).success(function(oData) {
-                var results = oData.data ? oData.data : [];
-                $scope.items = results;
-                //console.log("ITEMS: " + JSON.stringify(results));
-                if ($.url().param('access_token')) {
-                    // PLACE HOLDER FOR ACCESS TOKEN AUTH
-                }
-            }).error(function (oData, status) {
-                var errorMsg = oData['error'] || null;
-                if (errorMsg && status === 403) {
-                    alert(errorMsg);
-                }
+            $http.jsonp(instagram_api)
+                .success(callback)
+                .error(function (oData, status) {
+                    var errorMsg = oData['error'] || null;
+                    if (errorMsg && status === 403) {
+                        alert(errorMsg);
+                    }
+                });
+        };
+        $scope.getNextImages = function() {
+            $scope.getImages($scope.instagramTagEntered, function(oData) {
+                $scope.nextItems = oData.data ? oData.data : [];
             });
         };
     })
