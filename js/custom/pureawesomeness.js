@@ -88,7 +88,9 @@ awesomeModule.controller('PureAwesomenessCtrl', function ($scope, $http, $timeou
                 $scope.itemIndex = 0;
             }
             $scope.item = $scope.items[$scope.itemIndex];
-            $scope.promise = $timeout(function(){ $scope.instagramItemUpdate(1);}, 5000);
+        };
+        $scope.startTimer = function() {
+            $scope.promise = $timeout(function(){ $scope.instagramItemUpdate(1); $scope.startTimer()}, 5000);
         };
         $scope.pauseTimer = function() {
             $timeout.cancel($scope.promise);
