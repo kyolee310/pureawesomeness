@@ -47,4 +47,16 @@ body {
   padding: 10px 10px;
 }
 
+.item-nav-button:hover {
+  color: orange;
+}
+
+.addon-button:hover {
+  color: orange;
+}
+
+.blue {
+    color: blue;
+}
+
 

@@ -102,6 +102,12 @@ awesomeModule.controller('PureAwesomenessCtrl', function ($scope, $http, $timeou
             $timeout.cancel($scope.promise);
             $scope.isTimerRunning = false;
         };
+        $scope.playButtonClass = function() {
+           if( $scope.isTimerRunning ){
+               return 'blue';
+           }
+           return undefined;
+        };
         $scope.instagramTagInputBoxKeypress = function (ev) {
             if (ev.which==13)
                  $scope.instagramTagUpdate();

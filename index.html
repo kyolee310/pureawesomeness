@@ -23,7 +23,7 @@
                      <input type="text" class="form-control" name="inputbox-instagram-tag" placeholder="<enter tag here>"
                         ng-model="instagramTag" ng-click="instagramTag = ''" 
                         ng-keypress="instagramTagInputBoxKeypress($event)">
-                     <span class="input-group-addon" ng-click="instagramTagUpdate()">
+                     <span class="input-group-addon addon-button" ng-click="instagramTagUpdate()">
                          <span class="glyphicon glyphicon-refresh"></span>
                      </span>
                  </div>
@@ -45,7 +45,7 @@
                            <span class="item-nav-button" ng-click="pauseTimer()">
                                <span class="glyphicon glyphicon-pause"></span>
                            </span>
-                           <span class="item-nav-button" ng-click="startTimer()">
+                           <span class="item-nav-button" ng-click="startTimer()" ng-class="playButtonClass()">
                                <span class="glyphicon glyphicon-play"></span>
                            </span>
                            <span class="item-nav-button" ng-click="instagramItemUpdate(1)">
