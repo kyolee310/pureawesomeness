@@ -16,8 +16,8 @@
     <div class="container-fluid" id="outer-container">
 
          <!-- SEARCH BOX -->
-         <div class="row top-inputbox-div">
-             <div class="col-lg-4 col-centered">
+         <div class="row">
+             <div class="col-lg-4 col-md-4 col-sm-6 col-centered padding-10x10">
                  <div class="input-group">
                      <span class="input-group-addon">TAG</span>
                      <input type="text" class="form-control" name="inputbox-instagram-tag" placeholder="<enter tag here>"
@@ -28,32 +28,32 @@
                      </span>
                  </div>
              </div>
-             <div class="col-lg-1 col-centered" ng-cloak>
-                 <img class="instagram-logo" src="img/instagram_256.png">
-                 <span ng-show="items.length > 0">{{ itemIndex + 1 }}/{{ items.length }}</span>
-             </div>
+         </div>
+
+        <!-- INDEX BOX -->
+        <div class="row">
+            <div class="col-lg-4 col-centered text-center padding-10x10">
+                <img class="instagram-logo" src="img/instagram_256.png">
+                <span ng-show="items.length > 0" ng-cloak>{{itemIndex + 1}}/{{items.length}}</span>
+            </div>
         </div>
 
         <!-- SLIDER CONTROLLER -->
-        <div id="slider">
-               <div class="row">
-                   <div class="col-lg-8 col-centered">
-                       <div class="text-center">
-                           <span class="item-nav-button" ng-click="instagramItemUpdate(-1)">
-                               <span class="glyphicon glyphicon-backward"></span>
-                           </span>
-                           <span class="item-nav-button" ng-click="pauseTimer()">
-                               <span class="glyphicon glyphicon-pause"></span>
-                           </span>
-                           <span class="item-nav-button" ng-click="startTimer()" ng-class="playButtonClass()">
-                               <span class="glyphicon glyphicon-play"></span>
-                           </span>
-                           <span class="item-nav-button" ng-click="instagramItemUpdate(1)">
-                               <span class="glyphicon glyphicon-forward"></span>
-                           </span>
-                       </div>
-                   </div>
-               </div>
+        <div class="row">
+            <div class="col-lg-8 col-centered text-center">
+                <span class="padding-10x10" ng-click="instagramItemUpdate(-1)">
+                    <span class="glyphicon glyphicon-backward"></span>
+                </span>
+                <span class="padding-10x10" ng-click="pauseTimer()">
+                    <span class="glyphicon glyphicon-pause"></span>
+                </span>
+                <span class="padding-10x10" ng-click="startTimer()" ng-class="playButtonClass()">
+                    <span class="glyphicon glyphicon-play"></span>
+                </span>
+                <span class="padding-10x10" ng-click="instagramItemUpdate(1)">
+                    <span class="glyphicon glyphicon-forward"></span>
+               </span>
+            </div>
         </div>
 
         <!-- INSTAGRAM DATA BLOCK -->

@@ -1,5 +1,5 @@
 body {
-  padding-top: 50px;
+  padding-top: 60px;
 }
 
 .well {
@@ -16,22 +16,15 @@ body {
   height: 64px;
 }
 
-.top-inputbox-div {
-  padding: 10px 15px;
-  display: inline;
+.padding-10x10 {
+  padding: 10px 10px;
 }
 
-.col-centered{
+.col-centered {
   float: none;
   margin: 0 auto;
 }
 
-.instagram-items-div {
-  text-align: left;
-}
-.instagram-image-div {
-  padding: 20px 15px;
-}
 .instagram-items-span {
   display: block;
   padding: 2px 0px;
@@ -41,10 +34,6 @@ body {
   display: inline;
   padding: 5px 2px;
   word-wrap: break-word;
-}
-
-.item-nav-button {
-  padding: 10px 10px;
 }
 
 .item-nav-button:hover {
