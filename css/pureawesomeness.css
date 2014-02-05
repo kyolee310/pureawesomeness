@@ -22,8 +22,8 @@ body {
 }
 
 .col-centered{
-    float: none;
-    margin: 0 auto;
+  float: none;
+  margin: 0 auto;
 }
 
 .instagram-items-div {
@@ -53,6 +53,10 @@ body {
 
 .addon-button:hover {
   color: orange;
+}
+
+.tag-button:hover {
+  color: blue;
 }
 
 .blue {

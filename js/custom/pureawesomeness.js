@@ -108,6 +108,10 @@ awesomeModule.controller('PureAwesomenessCtrl', function ($scope, $http, $timeou
            }
            return undefined;
         };
+        $scope.tagClicked = function (tag) {
+            $scope.instagramTag = tag;
+            $scope.instagramTagUpdate();
+        };
         $scope.instagramTagInputBoxKeypress = function (ev) {
             if (ev.which==13)
                  $scope.instagramTagUpdate();

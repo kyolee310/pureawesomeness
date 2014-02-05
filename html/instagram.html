@@ -29,7 +29,7 @@
 			    <span class="instagram-tags-span">
 				<span class="glyphicon glyphicon-tags"></span>
 				<span ng-repeat="tag in item.tags">
-				    <span class="label label-warning">{{ tag }}</span>
+				    <span class="label label-warning tag-button" ng-click="tagClicked(tag)">{{ tag }}</span>
 				</span>
 			    </span>
 			    <span class="instagram-items-span">
