@@ -37,6 +37,7 @@ awesomeModule.controller('PureAwesomenessCtrl', function ($scope, $http, $timeou
         $scope.item = {};
         $scope.itemIndex = 0;
         $scope.itemDisplayID = -1;
+        $scope.isTimerRunning = false;
 
         $scope.initController = function () {
             $scope.setInit();
@@ -78,10 +79,8 @@ awesomeModule.controller('PureAwesomenessCtrl', function ($scope, $http, $timeou
             }
         };
         $scope.itemIndexWatchCallback = function () {
-            if( $scope.items && $scope.nextItems.length == 0 ){
-                if( $scope.itemIndex == $scope.items.length - 4 ){
-                    $scope.getNextImages();
-                }
+            if( $scope.isTimerRunning && $scope.nextItems.length == 0 && $scope.itemIndex == $scope.items.length - 3 ){
+                $scope.getNextImages();
             }
         };
         $scope.isShow = function (item) {
@@ -97,7 +96,7 @@ awesomeModule.controller('PureAwesomenessCtrl', function ($scope, $http, $timeou
             }
             if( $scope.itemIndex >= $scope.items.length){
                $scope.itemIndex = 0;
-               if( $scope.promise && $scope.nextItems ){
+               if( $scope.isTimerRunning && $scope.nextItems ){
                    $scope.items = $scope.nextItems;
                    $scope.nextItems = [];
                }
@@ -106,9 +105,11 @@ awesomeModule.controller('PureAwesomenessCtrl', function ($scope, $http, $timeou
         };
         $scope.startTimer = function() {
             $scope.promise = $timeout(function(){ $scope.instagramItemUpdate(1); $scope.startTimer()}, 5000);
+            $scope.isTimerRunning = true;
         };
         $scope.pauseTimer = function() {
             $timeout.cancel($scope.promise);
+            $scope.isTimerRunning = false;
         };
         $scope.instagramTagInputBoxKeypress = function (ev) {
             if (ev.which==13)
