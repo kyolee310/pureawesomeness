@@ -55,18 +55,9 @@ awesomeModule.controller('PureAwesomenessCtrl', function ($scope, $http, $timeou
             });
         };
         $scope.setWatch = function () {
-            $scope.$watch('instagramTagEntered', $scope.instagramTagEnteredWatchCallback );
             $scope.$watch('item', $scope.itemWatchCallback );
             $scope.$watch('items', $scope.itemsWatchCallback );
             $scope.$watch('itemIndex', $scope.itemIndexWatchCallback );
-        };
-        $scope.instagramTagEnteredWatchCallback = function () {
-            if( $scope.instagramTagEntered ){
-                $('#span-instagram-tag-entered').text( "#" + $scope.instagramTagEntered);
-                $scope.getImages($scope.instagramTagEntered, function(oData) {
-                    $scope.items = oData.data ? oData.data : [];
-                });
-            }
         };
         $scope.itemWatchCallback = function () {
             if( $scope.items ){
@@ -117,10 +108,14 @@ awesomeModule.controller('PureAwesomenessCtrl', function ($scope, $http, $timeou
         };
         $scope.instagramTagUpdate = function () {
             $scope.instagramTagEntered = ($scope.instagramTag).replace(/\s/g, '');
+            $('#span-instagram-tag-entered').text( "#" + $scope.instagramTagEntered);
+            $scope.getImages($scope.instagramTagEntered, function(oData) {
+                $scope.items = oData.data ? oData.data : [];
+            });
+            $scope.itemIndex = 0;
         };
         $scope.getImages = function (tag, callback) {
             var instagram_api = 'https://api.instagram.com/v1/tags/'+tag+'/media/recent?client_id='+$scope.clientID+'&callback=JSON_CALLBACK'
-            //console.log("API: " + instagram_api);
             $http.jsonp(instagram_api)
                 .success(callback)
                 .error(function (oData, status) {
