@@ -28,7 +28,7 @@ soundcloudAwesomeModule.controller('SoundcloudAwesomenessCtrl', function ($scope
                 cache : false,
                 success: function(data) {
                     var config = eval('(' + data + ')');
-                    $scope.clientID = config.client_id;
+                    $scope.clientID = config.soundcloud_client_id;
                 },
             });
         };
