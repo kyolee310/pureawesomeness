@@ -12,30 +12,11 @@
     <!-- NAV BAR -->
     <navbar></navbar>
 
-    <!-- MAIN --->
-    <div class="container-fluid" id="outer-container" ng-app="SearchAwesomeness" ng-controller="SearchAwesomenessCtrl" ng-init="initController()">
-
-         <!-- SEARCH BOX -->
-         <div class="row">
-             <div class="col-lg-4 col-md-4 col-sm-6 col-centered padding-10x10">
-                 <div class="input-group">
-                     <span class="input-group-addon">TAG</span>
-                     <input type="text" class="form-control" name="inputbox-search-tag" placeholder="<enter tag here>"
-                        ng-model="searchTag" ng-click="instagramTag = ''" 
-                        ng-keypress="searchTagInputBoxKeypress($event)">
-                     <span class="input-group-addon addon-button" ng-click="searchTagUpdate()">
-                         <span class="glyphicon glyphicon-refresh"></span>
-                     </span>
-                 </div>
-             </div>
-         </div>
-
-    </div>
+    <!-- SEARCH BOX --->
+    <searchbox></searchbox>
 
     <!-- DATA BLOCK -->
     <div ng-view></div>
-
-    <!-- END OF MAIN -->
 
     <!-- JS SCRIPTS --->
     <script src="js/thirdparty/jquery/jquery-2.0.3.min.js"></script>

@@ -22,6 +22,14 @@ pureAwesomenessModule.directive("navbar", function () {
         };
     });
 
+pureAwesomenessModule.directive("searchbox", function () {
+        return {
+            restrict: 'E',
+            templateUrl: 'html/searchbox.html',
+            replace: true
+        };
+    });
+
 pureAwesomenessModule.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
