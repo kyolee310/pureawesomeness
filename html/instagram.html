@@ -1,5 +1,30 @@
 
-<div id="instagram-data">
+<div id="instagram-data"  ng-app="InstagramAwesomeness" ng-controller="InstagramAwesomenessCtrl" ng-init="initController()">
+    
+    <div class="row">
+        <div class="col-lg-4 col-centered text-center padding-10x10">
+            <img class="instagram-logo" src="img/instagram_256.png">
+            <span ng-show="items.length > 0" ng-cloak>{{itemIndex + 1}}/{{items.length}}</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-8 col-centered text-center">
+            <span class="padding-10x10" ng-click="instagramItemUpdate(-1)">
+                <span class="glyphicon glyphicon-backward"></span>
+            </span>
+            <span class="padding-10x10" ng-click="pauseTimer()">
+                <span class="glyphicon glyphicon-pause"></span>
+            </span>
+            <span class="padding-10x10" ng-click="startTimer()" ng-class="playButtonClass()">
+                <span class="glyphicon glyphicon-play"></span>
+            </span>
+            <span class="padding-10x10" ng-click="instagramItemUpdate(1)">
+                <span class="glyphicon glyphicon-forward"></span>
+           </span>
+        </div>
+    </div>
+
     <div ng-repeat="item in items" ng-show="isShow(item)" ng-cloak>
 
         <div class="row">

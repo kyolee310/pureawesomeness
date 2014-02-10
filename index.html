@@ -7,66 +7,45 @@
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" type="text/css" media="screen" charset="utf-8">
     <link rel="stylesheet" href="css/pureawesomeness.css" type="text/css" media="screen" charset="utf-8">
 </head>
-<body ng-app="PureAwesomeness" ng-controller="PureAwesomenessCtrl" ng-init="initController()">
+<body ng-app="PureAwesomeness" ng-controller="PureAwesomenessCtrl">
 
     <!-- NAV BAR -->
     <navbar></navbar>
 
     <!-- MAIN --->
-    <div class="container-fluid" id="outer-container">
+    <div class="container-fluid" id="outer-container" ng-app="SearchAwesomeness" ng-controller="SearchAwesomenessCtrl" ng-init="initController()">
 
          <!-- SEARCH BOX -->
          <div class="row">
              <div class="col-lg-4 col-md-4 col-sm-6 col-centered padding-10x10">
                  <div class="input-group">
                      <span class="input-group-addon">TAG</span>
-                     <input type="text" class="form-control" name="inputbox-instagram-tag" placeholder="<enter tag here>"
-                        ng-model="instagramTag" ng-click="instagramTag = ''" 
-                        ng-keypress="instagramTagInputBoxKeypress($event)">
-                     <span class="input-group-addon addon-button" ng-click="instagramTagUpdate()">
+                     <input type="text" class="form-control" name="inputbox-search-tag" placeholder="<enter tag here>"
+                        ng-model="searchTag" ng-click="instagramTag = ''" 
+                        ng-keypress="searchTagInputBoxKeypress($event)">
+                     <span class="input-group-addon addon-button" ng-click="searchTagUpdate()">
                          <span class="glyphicon glyphicon-refresh"></span>
                      </span>
                  </div>
              </div>
          </div>
 
-        <!-- INDEX BOX -->
-        <div class="row">
-            <div class="col-lg-4 col-centered text-center padding-10x10">
-                <img class="instagram-logo" src="img/instagram_256.png">
-                <span ng-show="items.length > 0" ng-cloak>{{itemIndex + 1}}/{{items.length}}</span>
-            </div>
-        </div>
-
-        <!-- SLIDER CONTROLLER -->
-        <div class="row">
-            <div class="col-lg-8 col-centered text-center">
-                <span class="padding-10x10" ng-click="instagramItemUpdate(-1)">
-                    <span class="glyphicon glyphicon-backward"></span>
-                </span>
-                <span class="padding-10x10" ng-click="pauseTimer()">
-                    <span class="glyphicon glyphicon-pause"></span>
-                </span>
-                <span class="padding-10x10" ng-click="startTimer()" ng-class="playButtonClass()">
-                    <span class="glyphicon glyphicon-play"></span>
-                </span>
-                <span class="padding-10x10" ng-click="instagramItemUpdate(1)">
-                    <span class="glyphicon glyphicon-forward"></span>
-               </span>
-            </div>
-        </div>
-
-        <!-- INSTAGRAM DATA BLOCK -->
-        <instagram></instagram>
-
     </div>
+
+    <!-- DATA BLOCK -->
+    <div ng-view></div>
+
     <!-- END OF MAIN -->
 
     <!-- JS SCRIPTS --->
     <script src="js/thirdparty/jquery/jquery-2.0.3.min.js"></script>
     <script src="js/thirdparty/utils/purl.js"></script>
     <script src="js/thirdparty/angular/angular-1.2.9.min.js"></script>
+    <script src="js/thirdparty/angular/angular-route.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/custom/searchawesomeness.js"></script>
+    <script src="js/custom/instagramawesomeness.js"></script>
+    <script src="js/custom/soundcloudawesomeness.js"></script>
     <script src="js/custom/pureawesomeness.js"></script>
 </body>
 </html>
