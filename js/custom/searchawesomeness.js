@@ -22,8 +22,9 @@ awesomeModule.controller('SearchAwesomenessCtrl', function ($scope) {
             });
         };
         $scope.searchTagInputBoxKeypress = function (ev) {
-            if (ev.which==13)
+            if (ev.which==13){
                  $scope.searchTagUpdate();
+            }
         };
         $scope.searchTagUpdate = function () {
             $scope.searchTagEntered = ($scope.searchTag).replace(/\s/g, '');
