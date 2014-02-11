@@ -40,13 +40,19 @@
 		       </div>
 		       <div class="col-lg-10 col-md-10 col-sm-9">
 			    <span class="instagram-items-span">
-				<span class="glyphicon glyphicon-comment"></span>
+				<span class="glyphicon glyphicon-music"></span>
 				<span>{{ item.title }}</span>
 			    </span>
 			    <span class="instagram-items-span">
 				<span class="glyphicon glyphicon-heart"></span>
 				<span>{{ item.favoritings_count }}</span>
 			    </span>
+                            <span class="instagram-items-span">
+                                <span class="glyphicon glyphicon-tags"></span>
+                                <span ng-repeat="tag in item.tag_array" ng-cloak>
+                                    <span class="label label-warning tag-button">{{tag}}</span>
+                                </span>
+                            </span>
                         </div>
 		    </div>
                 </div>

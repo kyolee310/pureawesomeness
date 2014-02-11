@@ -105,10 +105,11 @@ soundcloudAwesomeModule.controller('SoundcloudAwesomenessCtrl', function ($scope
             SC.get('/tracks', { tags: tag, limit: 5 }, function(tracks) {
                 $scope.items = tracks;
                 console.log($scope.items);
+                $.each($scope.items, function(index,item){
+                    $scope.items[index]['tag_array'] = item.tag_list.split(" ");
+                });
                 $scope.$apply();
                 $.each($scope.items, function(index,item){
-                    console.log("URI: " + item.uri);
-                    console.log("ID: " + item.id);
                     SC.oEmbed(item.uri, { iframe: false, show_comments: false},document.getElementById(item.id));
                 });
             });
