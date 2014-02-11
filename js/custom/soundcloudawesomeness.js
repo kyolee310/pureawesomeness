@@ -12,20 +12,16 @@ soundcloudAwesomeModule.controller('SoundcloudAwesomenessCtrl', function ($scope
 
         $scope.clientID = '';
         $scope.redirectURI = '';
-        $scope.soundcloudTag = 'sanfrancisco';
-        $scope.soundcloudTagEntered = '';
+        $scope.soundcloudTag = '';
         $scope.items = [];
         $scope.nextItems = [];
         $scope.item = {};
         $scope.itemIndex = 0;
         $scope.itemDisplayID = -1;
         $scope.isTimerRunning = false;
+        $scope.initializedSC = false;
 
-        $scope.initController = function () {
-            $scope.setInit();
-            $scope.setWatch();
-        };
-        $scope.setInit = function () {
+        $scope.makeAPICall = function (callback) {
             $.ajax({
                 url : "config/pureawesomeness.json",
                 dataType : 'text',
@@ -34,9 +30,19 @@ soundcloudAwesomeModule.controller('SoundcloudAwesomenessCtrl', function ($scope
                     var config = eval('(' + data + ')');
                     $scope.clientID = config.soundcloud_client_id;
                     $scope.redirectURI = config.redirect_uri;
-                    $scope.connectSoundcloud();
+                    callback();
                 },
             });
+        };
+        $scope.initController = function () {
+            $scope.setInit();
+            $scope.setWatch();
+        };
+        $scope.setInit = function () {
+            if( $scope.awesomeTag != '' ){
+                $scope.soundcloudTag = $scope.awesomeTag;
+            }
+            $scope.initializedSC = false;
         };
         $scope.setWatch = function () {
             $scope.$watch('awesomeTag', function(){
@@ -79,10 +85,7 @@ soundcloudAwesomeModule.controller('SoundcloudAwesomenessCtrl', function ($scope
         };
         $scope.tagUpdated = function (tag) {
             $scope.soundcloudTag = tag;
-            if( $scope.clientID == '' ){
-                $scope.setInit();
-            }
-            //$scope.connectSoundcloud();
+            $scope.makeAPICall($scope.connectSoundcloud);
         };
         $scope.tagClicked = function (tag) {
             $scope.updateAwesomeTag(tag);
@@ -90,31 +93,37 @@ soundcloudAwesomeModule.controller('SoundcloudAwesomenessCtrl', function ($scope
         $scope.connectSoundcloud = function () {
             console.log("SC Client ID: " + $scope.clientID);
             console.log("SC Redirect URI: " + $scope.redirectURI);
-            // initialize client with app credentials
-            SC.initialize({
-                client_id: $scope.clientID,
-                redirect_uri: $scope.redirectURI
-            });
 
-            // initiate auth popup
-            SC.connect(function() {
-                SC.get('/me', function(me) { 
-                    console.log('Hello, ' + me.username); 
+            if( $scope.initializedSC == false){
+            // initialize client with app credentials
+                SC.initialize({
+                    client_id: $scope.clientID,
+                    redirect_uri: $scope.redirectURI
                 });
-            });
+
+                // initiate auth popup
+                SC.connect(function() {
+                    SC.get('/me', function(me) { 
+                        console.log('Hello, ' + me.username); 
+                    });
+                });
+                $scope.initializedSC = true;
+            }
             $scope.getTracks($scope.soundcloudTag);
         };
         $scope.getTracks = function (tag) {
             SC.get('/tracks', { tags: tag, limit: 5 }, function(tracks) {
                 $scope.items = tracks;
                 console.log($scope.items);
-                $.each($scope.items, function(index,item){
-                    $scope.items[index]['tag_array'] = item.tag_list.split(" ");
-                });
-                $scope.$apply();
-                $.each($scope.items, function(index,item){
-                    SC.oEmbed(item.uri, { iframe: false, show_comments: false},document.getElementById(item.id));
-                });
+                if( $scope.items.length >= 1 ){
+                    $.each($scope.items, function(index,item){
+                        $scope.items[index]['tag_array'] = item.tag_list.split(" ");
+                    });
+                    $scope.$apply();
+                    $.each($scope.items, function(index,item){
+                        SC.oEmbed(item.uri, { iframe: false, show_comments: false},document.getElementById(item.id));
+                    });
+                }
             });
         };
     })
