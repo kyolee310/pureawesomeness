@@ -106,12 +106,12 @@ soundcloudAwesomeModule.controller('SoundcloudAwesomenessCtrl', function ($scope
                 $scope.items = tracks;
                 console.log($scope.items);
                 $scope.$apply();
+                $.each($scope.items, function(index,item){
+                    console.log("URI: " + item.uri);
+                    console.log("ID: " + item.id);
+                    SC.oEmbed(item.uri, { iframe: false, show_comments: false},document.getElementById(item.id));
+                });
             });
-        };
-        $scope.showSCWidget = function (id, uri){
-            console.log("URI: " + uri);
-            console.log("ID: " + id);
-            SC.oEmbed(uri, { iframe: false, show_comments: false},document.getElementById(id));
         };
     })
 ;
