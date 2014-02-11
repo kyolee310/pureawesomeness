@@ -82,7 +82,10 @@ soundcloudAwesomeModule.controller('SoundcloudAwesomenessCtrl', function ($scope
             if( $scope.clientID == '' ){
                 $scope.setInit();
             }
-            $scope.connectSoundcloud();
+            //$scope.connectSoundcloud();
+        };
+        $scope.tagClicked = function (tag) {
+            $scope.updateAwesomeTag(tag);
         };
         $scope.connectSoundcloud = function () {
             console.log("SC Client ID: " + $scope.clientID);

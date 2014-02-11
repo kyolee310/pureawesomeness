@@ -50,7 +50,7 @@
                             <span class="instagram-items-span">
                                 <span class="glyphicon glyphicon-tags"></span>
                                 <span ng-repeat="tag in item.tag_array" ng-cloak>
-                                    <span class="label label-warning tag-button">{{tag}}</span>
+                                    <span class="label label-warning tag-button" ng-click="tagClicked(tag)">{{tag}}</span>
                                 </span>
                             </span>
                         </div>
