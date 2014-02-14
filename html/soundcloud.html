@@ -2,7 +2,7 @@
 <div id="soundcloud-data"  ng-app="SoundcloudAwesomeness" ng-controller="SoundcloudAwesomenessCtrl" ng-init="initController()">
 
      <div class="row">
-        <div class="col-lg-4 col-centered text-center padding-10x10">
+        <div class="col-lg-4 col-centered text-center padded-element">
             <img class="instagram-logo" src="img/soundcloud_256.jpeg">
             <span ng-show="items.length > 0" ng-cloak>{{itemIndex + 1}}/{{items.length}}</span>
         </div>
@@ -10,23 +10,23 @@
 
     <div class="row">
         <div class="col-lg-8 col-centered text-center">
-            <span class="padding-10x10" ng-click="instagramItemUpdate(-1)">
+            <span class="padded-element" ng-click="instagramItemUpdate(-1)">
                 <span class="glyphicon glyphicon-backward"></span>
             </span>
-            <span class="padding-10x10" ng-click="instagramItemUpdate(1)">
+            <span class="padded-element" ng-click="instagramItemUpdate(1)">
                 <span class="glyphicon glyphicon-forward"></span>
            </span>
         </div>
     </div>
 
     <div ng-repeat="item in items" ng-show="isShow(item)" ng-cloak>
-        <div class="row padding-10x10">
+        <div class="row padded-element">
             <div id="{{item.id}}" class="col-lg-12 col-centered text-center">
             </div>
         </div>
 
         <div class="row">
-            <div class="col-lg-8 col-md-6 col-sm-8 col-centered padding-10x10">
+            <div class="col-lg-8 col-md-6 col-sm-8 col-centered padded-element">
 	       <div class="well">
 		   <div class="row">
 			<div class="col-lg-2 col-md-2 col-sm-3 pull-left text-right">
