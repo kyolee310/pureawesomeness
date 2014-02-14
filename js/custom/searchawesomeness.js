@@ -8,10 +8,9 @@
 
 var awesomeModule = angular.module('SearchAwesomeness', ['PureAwesomeness']);
 
-awesomeModule.controller('SearchAwesomenessCtrl', function ($scope) {
+awesomeModule.controller('SearchAwesomenessCtrl', function ($scope, $timeout) {
 
         $scope.searchTag = '';
-        $scope.searchTagEntered = '';
 
         $scope.initController = function () {
             $scope.setWatch();
@@ -27,8 +26,9 @@ awesomeModule.controller('SearchAwesomenessCtrl', function ($scope) {
             }
         };
         $scope.searchTagUpdate = function () {
-            $scope.searchTagEntered = ($scope.searchTag).replace(/\s/g, '');
-            $scope.updateAwesomeTag($scope.searchTagEntered);
+            var searchTagFiltered = ($scope.searchTag).replace(/\s/g, '');
+            $scope.updateAwesomeTag('');
+            $timeout(function(){$scope.updateAwesomeTag(searchTagFiltered);}, 100);
         };
     })
 ;
