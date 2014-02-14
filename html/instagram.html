@@ -10,16 +10,16 @@
 
     <div class="row">
         <div class="col-lg-8 col-centered text-center">
-            <span class="padded-element" ng-click="instagramItemUpdate(-1)">
+            <span class="padded-element button-item-nav" ng-click="instagramItemUpdate(-1)">
                 <span class="glyphicon glyphicon-backward"></span>
             </span>
-            <span class="padded-element" ng-click="pauseTimer()">
+            <span class="padded-element button-item-nav" ng-click="pauseTimer()">
                 <span class="glyphicon glyphicon-pause"></span>
             </span>
-            <span class="padded-element" ng-click="startTimer()" ng-class="playButtonClass()">
+            <span class="padded-element button-item-nav" ng-click="startTimer()" ng-class="playButtonClass()">
                 <span class="glyphicon glyphicon-play"></span>
             </span>
-            <span class="padded-element" ng-click="instagramItemUpdate(1)">
+            <span class="padded-element button-item-nav" ng-click="instagramItemUpdate(1)">
                 <span class="glyphicon glyphicon-forward"></span>
            </span>
         </div>
@@ -38,26 +38,26 @@
 	       <div class="well">
 		   <div class="row">
 			<div class="col-lg-2 col-md-2 col-sm-3 pull-left text-right">
-			     <span class="instagram-items-span">
+			     <span class="display-block-item-span">
 				<img class="profile-picture" ng-src="{{item.user.profile_picture}}">
 			     </span>
-			    <span class="instagram-items-span">
+			    <span class="display-block-item-span">
 				<span class="glyphicon glyphicon-user"></span>
 				<span>{{ item.user.username }}</span>
 			    </span>
 		       </div>
 		       <div class="col-lg-10 col-md-10 col-sm-9">
-			    <span class="instagram-items-span">
+			    <span class="display-block-item-span">
 				<span class="glyphicon glyphicon-comment"></span>
 				<span>{{ item.caption.text }}</span>
 			    </span>
-			    <span class="instagram-tags-span">
+			    <span class="display-block-tags-span">
 				<span class="glyphicon glyphicon-tags"></span>
 				<span ng-repeat="tag in item.tags">
-				    <span class="label label-warning tag-button" ng-click="tagClicked(tag)">{{ tag }}</span>
+				    <span class="label label-warning icon-tag" ng-click="tagClicked(tag)">{{ tag }}</span>
 				</span>
 			    </span>
-			    <span class="instagram-items-span">
+			    <span class="display-block-item-span">
 				<span class="glyphicon glyphicon-heart"></span>
 				<span>{{ item.likes.count }}</span>
 			    </span>

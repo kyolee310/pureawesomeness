@@ -91,7 +91,7 @@ instagramAwesomeModule.controller('InstagramAwesomenessCtrl', function ($scope, 
         };
         $scope.playButtonClass = function() {
            if( $scope.isTimerRunning ){
-               return 'blue';
+               return 'color-blue';
            }
            return undefined;
         };

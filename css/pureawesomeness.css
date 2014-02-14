@@ -6,6 +6,14 @@ body {
    background-color: rgba(200, 200, 200, 0.4);
 }
 
+/* COLOR */
+
+.color-blue {
+    color: blue;
+}
+
+/* MEDIA */
+
 .instagram-logo {
   width: 32px;
   height: 32px;
@@ -16,6 +24,36 @@ body {
   height: 64px;
 }
 
+/* DISPLAY BLOCK */  
+
+.display-block-item-span {
+  display: block;
+  padding: 2px 0px;
+  word-wrap: break-word;
+}
+
+.display-block-tags-span {
+  display: inline;
+  padding: 5px 2px;
+  word-wrap: break-word;
+}
+
+/* BUTTONS AND ICONS */
+
+.button-item-nav:hover {
+  color: orange;
+}
+
+.button-refresh:hover {
+  color: orange;
+}
+
+.icon-tag:hover {
+  color: blue;
+}
+
+/* OTHER */
+
 .padded-element {
   padding: 10px 10px;
 }
@@ -23,33 +61,6 @@ body {
 .col-centered {
   float: none;
   margin: 0 auto;
-}
-
-.instagram-items-span {
-  display: block;
-  padding: 2px 0px;
-  word-wrap: break-word;
-}
-.instagram-tags-span {
-  display: inline;
-  padding: 5px 2px;
-  word-wrap: break-word;
-}
-
-.item-nav-button:hover {
-  color: orange;
-}
-
-.addon-button:hover {
-  color: orange;
-}
-
-.tag-button:hover {
-  color: blue;
-}
-
-.blue {
-    color: blue;
 }
 
 
