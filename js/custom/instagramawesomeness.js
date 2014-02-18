@@ -52,6 +52,7 @@ instagramAwesomeModule.controller('InstagramAwesomenessCtrl', function ($scope, 
                if (event.originalEvent.source == popup && event.originalEvent.origin == window.location.origin) {
                   //console.log('Received Access Token (from ' + event.originalEvent.origin + '): ' + event.originalEvent.data.access_token);
                   $scope.access_token = event.originalEvent.data.access_token;
+                  localStorage["pureawesomeness_access_token"] = $scope.access_token;
                }
            });
         };
@@ -69,7 +70,11 @@ instagramAwesomeModule.controller('InstagramAwesomenessCtrl', function ($scope, 
                     var config = eval('(' + data + ')');
                     $scope.clientID = config.instagram_client_id;
                     $scope.redirectURI = config.redirect_uri;
-                    $scope.getOAuth();
+                    if( localStorage["pureawesomeness_access_token"] != undefined ){
+                        $scope.access_token = localStorage["pureawesomeness_access_token"];
+                    }else{
+                        $scope.getOAuth();
+                    }
                 },
             });
         };
