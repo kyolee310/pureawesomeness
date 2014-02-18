@@ -56,6 +56,11 @@ instagramAwesomeModule.controller('InstagramAwesomenessCtrl', function ($scope, 
                }
            });
         };
+        $scope.accessTokenUpdateCallback = function () {
+            if ( $scope.access_token != '' ){
+                 $scope.updateNotification("Received Access Token from Instagram");
+            }
+        };
 
         $scope.initController = function () {
             $scope.setInit();
@@ -72,6 +77,7 @@ instagramAwesomeModule.controller('InstagramAwesomenessCtrl', function ($scope, 
                     $scope.redirectURI = config.redirect_uri;
                     if( localStorage["pureawesomeness_access_token"] != undefined ){
                         $scope.access_token = localStorage["pureawesomeness_access_token"];
+                        $scope.$apply();
                     }else{
                         $scope.getOAuth();
                     }
@@ -87,6 +93,7 @@ instagramAwesomeModule.controller('InstagramAwesomenessCtrl', function ($scope, 
             $scope.$watch('item', $scope.itemWatchCallback );
             $scope.$watch('items', $scope.itemsWatchCallback );
             $scope.$watch('itemIndex', $scope.itemIndexWatchCallback );
+            $scope.$watch('access_token', $scope.accessTokenUpdateCallback );
         };
         $scope.itemWatchCallback = function () {
             if( $scope.items ){
