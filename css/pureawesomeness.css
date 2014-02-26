@@ -58,6 +58,10 @@ body {
   padding: 10px 10px;
 }
 
+.margined-element {
+  margin: 10px 10px;
+}
+
 .col-centered {
   float: none;
   margin: 0 auto;
